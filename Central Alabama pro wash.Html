@@ -1,0 +1,447 @@
+html_code = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Alabama Pro Wash — Pressure & Soft Washing | Alabaster, AL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0a1628 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            color: #ffffff;
+            letter-spacing: 4px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        .hero h1 span { color: #3b82f6; }
+        .hero-sub {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #94a3b8;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .hero-cta {
+            display: inline-flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-main {
+            background: #3b82f6;
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4); }
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .h-stat { text-align: center; }
+        .h-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: #3b82f6; line-height: 1; }
+        .h-stat-label { color: #64748b; font-size: 0.85rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Services Strip */
+        .services-strip {
+            background: #f8fafc;
+            padding: 80px 24px;
+        }
+        .strip-inner { max-width: 1200px; margin: 0 auto; }
+        .strip-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .strip-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #0f172a;
+            letter-spacing: 2px;
+        }
+        .strip-header p { color: #64748b; font-size: 1.1rem; margin-top: 8px; }
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .s-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .s-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .s-card:hover::before { transform: scaleX(1); }
+        .s-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+        .s-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .s-card h3 { font-size: 1.3rem; color: #0f172a; margin-bottom: 12px; }
+        .s-card p { color: #64748b; line-height: 1.7; font-size: 0.95rem; }
+        
+        /* Before/After Section */
+        .results {
+            background: #0f172a;
+            padding: 100px 24px;
+            text-align: center;
+        }
+        .results h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .results > p { color: #94a3b8; font-size: 1.1rem; max-width: 500px; margin: 0 auto 60px; }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .result-item {
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 48px 32px;
+            border: 1px solid #334155;
+        }
+        .result-item .emoji { font-size: 3rem; margin-bottom: 16px; }
+        .result-item h4 { color: #fff; font-size: 1.2rem; margin-bottom: 8px; }
+        .result-item p { color: #94a3b8; font-size: 0.95rem; }
+        
+        /* Coverage Map Section */
+        .coverage {
+            background: #f8fafc;
+            padding: 100px 24px;
+        }
+        .coverage-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .coverage h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #0f172a;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .coverage > p { color: #64748b; font-size: 1.1rem; margin-bottom: 48px; }
+        .city-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .city-tag {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            color: #334155;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .city-tag:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+        
+        /* Review Section */
+        .reviews {
+            background: #fff;
+            padding: 100px 24px;
+        }
+        .reviews-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .reviews h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #0f172a;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .reviews > p { color: #64748b; font-size: 1.1rem; margin-bottom: 48px; }
+        .review-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: left;
+            border-left: 4px solid #3b82f6;
+        }
+        .review-card .stars { color: #f59e0b; font-size: 1.2rem; margin-bottom: 16px; }
+        .review-card p { color: #334155; font-size: 1.1rem; line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+        .review-card .name { color: #0f172a; font-weight: 700; }
+        .review-card .loc { color: #64748b; font-size: 0.9rem; }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%);
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.1) 0%, transparent 70%);
+        }
+        .cta-content { position: relative; z-index: 1; }
+        .cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .cta p { color: #94a3b8; font-size: 1.2rem; max-width: 500px; margin: 0 auto 40px; }
+        
+        /* Footer */
+        footer {
+            background: #0a1628;
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .footer-info { color: #64748b; line-height: 2; font-size: 0.95rem; }
+        .footer-info a { color: #3b82f6; text-decoration: none; }
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #1e293b;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 600px) {
+            .hero-stats { gap: 24px; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn-main, .btn-ghost { width: 100%; max-width: 300px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Serving Central Alabama</div>
+            <h1>CENTRAL ALABAMA<br><span>PRO WASH</span></h1>
+            <p class="hero-sub">Professional pressure washing and soft washing for homes and businesses across Shelby County and beyond.</p>
+            <div class="hero-cta">
+                <a href="tel:2054825475" class="btn-main">📞 Get a Free Quote</a>
+                <a href="#services" class="btn-ghost">See Our Services</a>
+            </div>
+            <div class="hero-stats">
+                <div class="h-stat"><div class="h-stat-num">5.0★</div><div class="h-stat-label">Google Rating</div></div>
+                <div class="h-stat"><div class="h-stat-num">9</div><div class="h-stat-label">Cities Served</div></div>
+                <div class="h-stat"><div class="h-stat-num">100%</div><div class="h-stat-label">Satisfaction</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-strip" id="services">
+        <div class="strip-inner">
+            <div class="strip-header">
+                <h2>WHAT WE CLEAN</h2>
+                <p>Residential and commercial exterior cleaning that protects your property and restores curb appeal.</p>
+            </div>
+            <div class="service-cards">
+                <div class="s-card">
+                    <div class="s-icon">🏠</div>
+                    <h3>House Washing</h3>
+                    <p>Soft washing removes mold, mildew, and grime from siding, brick, and stucco without damaging your paint or surfaces.</p>
+                </div>
+                <div class="s-card">
+                    <div class="s-icon">🚗</div>
+                    <h3>Driveway & Concrete</h3>
+                    <p>High-pressure cleaning restores driveways, walkways, patios, and pool decks to like-new condition.</p>
+                </div>
+                <div class="s-card">
+                    <div class="s-icon">🏢</div>
+                    <h3>Commercial Properties</h3>
+                    <p>Keep your storefront, office building, or rental property looking professional. Scheduled maintenance available.</p>
+                </div>
+                <div class="s-card">
+                    <div class="s-icon">🛡️</div>
+                    <h3>Roof Cleaning</h3>
+                    <p>Low-pressure soft wash removes black streaks and algae without lifting shingles or voiding warranties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results">
+        <h2>THE DIFFERENCE WE MAKE</h2>
+        <p>Before and after every job, the transformation speaks for itself.</p>
+        <div class="result-grid">
+            <div class="result-item">
+                <div class="emoji">🧱</div>
+                <h4>Siding & Brick</h4>
+                <p>Years of built-up dirt, pollen, and algae — gone. Your home looks years younger.</p>
+            </div>
+            <div class="result-item">
+                <div class="emoji">🛤️</div>
+                <h4>Driveways & Walkways</h4>
+                <p>Oil stains, tire marks, and weathering removed. Concrete looks freshly poured.</p>
+            </div>
+            <div class="result-item">
+                <div class="emoji">🏘️</div>
+                <h4>Fences & Decks</h4>
+                <p>Wood and vinyl restored to original color. No more gray, weathered boards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage">
+        <div class="coverage-inner">
+            <h2>WHERE WE WORK</h2>
+            <p>Based in Alabaster. Serving the entire Birmingham metro area.</p>
+            <div class="city-grid">
+                <span class="city-tag">Alabaster</span>
+                <span class="city-tag">Pelham</span>
+                <span class="city-tag">Helena</span>
+                <span class="city-tag">Calera</span>
+                <span class="city-tag">Chelsea</span>
+                <span class="city-tag">Hoover</span>
+                <span class="city-tag">Vestavia Hills</span>
+                <span class="city-tag">Mountain Brook</span>
+                <span class="city-tag">Birmingham</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="reviews-inner">
+            <h2>WHAT CUSTOMERS SAY</h2>
+            <p>Real reviews from real homeowners across Central Alabama.</p>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Blake did a great job pressure washing our entire house, driveway, and patio furniture. I highly recommend him to anyone that needs pressure washing done to restore the look of your house. His pricing is very fair as well! Will definitely use him again in the future."</p>
+                <div class="name">Aaron</div>
+                <div class="loc">Alabaster, AL</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <h2>READY FOR A CLEAN START?</h2>
+            <p>Free quotes. Fair pricing. Professional results. Serving Central Alabama homes and businesses.</p>
+            <a href="tel:2054825475" class="btn-main">📞 Call (205) 482-5475</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">CENTRAL ALABAMA PRO WASH</div>
+            <div class="footer-info">
+                105 Widgeon Dr, Alabaster, AL 35007<br>
+                <a href="tel:2054825475">(205) 482-5475</a> · <a href="mailto:info@centralalprowash.com">info@centralalprowash.com</a>
+            </div>
+            <div class="footer-bottom">
+                © Central Alabama Pro Wash — Licensed & Insured — Alabaster, Alabama
+            </div>
+        </div>
+    </footer>
+</body>
+</html>'''
+
+with open('/mnt/agents/output/central-alabama-pro-wash-demo.html', 'w') as f:
+    f.write(html_code)
+
+print("Saved to /mnt/agents/output/central-alabama-pro-wash-demo.html")
